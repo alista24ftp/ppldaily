@@ -50,6 +50,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if($exception instanceof \Illuminate\Session\TokenMismatchEception){
+            if($request->ajax()){
+                return response()->json([
+                    'error' => 'Form expired. Please refresh and try again.',
+                ], 302);
+            }
+            return redirect()->back()->withInput($request->except('password', 'password_confirmation', '_token'))
+                ->with(['error'=>'Form expired. Please refresh and try again.']);
+        }
         return parent::render($request, $exception);
     }
 }
