@@ -25,7 +25,7 @@ const Index = props => {
             }
         }
         loginStatus();
-    });
+    }, [isLoggedIn]);
 
     const logout = () => {
         setIsLoggedIn(false);
@@ -33,9 +33,11 @@ const Index = props => {
     };
 
     return (
-        <AuthContext.Provider value={{handleLogin: () => {setIsLoggedIn(true)}, handleLogout: logout}}>
+        <AuthContext.Provider value={{
+            isLoggedIn: isLoggedIn, handleLogin: () => {setIsLoggedIn(true)}, handleLogout: () => {setIsLoggedIn(false)}
+        }}>
             <BrowserRouter>
-                <Header loggedIn={isLoggedIn} />
+                <Header />
                 <Router />
                 <Footer />
             </BrowserRouter>

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
 import CustomModal from '../CustomModal';
 import RegisterForm from './RegisterForm';
 import Button from 'react-bootstrap/Button';
@@ -6,7 +7,10 @@ import Button from 'react-bootstrap/Button';
 const Register = props => {
     const [modalShow, setModalShow] = useState(false);
 
-    const handleModalShow = () => setModalShow(true);
+    const handleModalShow = (e) => {
+        e.preventDefault();
+        setModalShow(true);
+    }
     const handleModalHide = () => setModalShow(false);
     const handleRegisterSuccess = () => {
         alert('Register success');
@@ -14,9 +18,9 @@ const Register = props => {
     };
     return (
         <>
-            <Button variant="primary" onClick={handleModalShow}>
+            <Link to="#" onClick={handleModalShow}>
                 注册
-            </Button>
+            </Link>
             <CustomModal show={modalShow} onHide={handleModalHide} modalTitle={"注册"}>
                 <RegisterForm successCallback={handleRegisterSuccess} />
             </CustomModal>

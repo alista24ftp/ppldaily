@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import {Link} from 'react-router-dom';
 import AuthContext from '../../AuthContext';
 
 const Logout = props => {
@@ -16,7 +17,7 @@ const Logout = props => {
         }
     }
 
-    return <button className="btn btn-danger" onClick={handleLogoutClick}>Logout</button>;
+    return <Link to="#" onClick={handleLogoutClick}>Logout</Link>;
 };
 
 export default Logout;

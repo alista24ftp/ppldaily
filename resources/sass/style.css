@@ -1,26 +1,51 @@
-/*&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&张燕玲 start&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&*/
 /*============================================header start=============================================*/
 header{width: 100%; z-index: 10000;}
 /*======header_top start======*/
 /*==pc端导航==*/
-.header_top{min-width: 1000px;height: 48px;border-top: 1px solid #dfdfdf;border-bottom: 1px solid #dfdfdf;background-color: #f8f8f8; }
-.header_topNav{width: 1000px; margin: 0 auto; position: relative;}
-.header_topNav .firstNav{float: left;}
-.header_topNav .firstNav>li{float: left;}
-.header_topNav .firstNav>li>a{display: block;height: 48px;line-height: 48px;padding: 0 15px;color: #333;font-size: 14px;}
+.header_top{min-width: 1180px;height: 48px;border-top: 1px solid #dfdfdf;border-bottom: 1px solid #dfdfdf;background-color: #f8f8f8; }
+.header_topNav{
+    width: 1180px; margin: 0 auto; position: relative;
+    display: flex;
+}
+.header_topNav .firstNav{
+    /*float: left;*/
+    display: flex;
+    flex: 1;
+}
+.header_topNav .firstNav>li{
+    /*float: left;*/
+    justify-self: flex-start;
+}
+.header_topNav .firstNav>li>a, .header_topNav .rightNav>li>a{display: block;height: 48px;line-height: 48px;padding: 0 15px;color: #333;font-size: 14px;}
 .header_topNav .firstNav>li:first-of-type a{padding-left: 0;}
 .lastClass{ position: relative;border-left: 1px solid rgba(0,0,0,0);border-right: 1px solid rgba(0,0,0,0); z-index: 1000;}
 .lastClass:hover{border-left: 1px solid #c7c7c7;border-right: 1px solid #c7c7c7;box-shadow: 0 -1px 1px #c7c7c7; background: #fff;}
-.lastClass:hover .downClass{display: block;}
+.lastClass:hover .downClass{
+    /*display: block;*/
+    display: flex; flex-wrap: wrap;
+}
 .lastClass:hover .more{color: #e20015;}
 .header_topNav .logo{display: none;}
 /*下拉菜单 */
 .downClass{position: absolute; right: -1px;top: 46px; width: 350px; background: #fff; border: 1px solid #c7c7c7;box-shadow: 0 1px 1px #c7c7c7; z-index: 1; border-top: 0; display: none;}
-.downClass:before{content: ''; display: block; position: absolute; width: 274px; border-top:  1px solid #c7c7c7; box-shadow: 0 0px 1px #c7c7c7; z-index: 1; height: 0; top: 0; left: 0;  }
-.downClass li{border-bottom: 1px dashed #c7c7c7; height: 48px;line-height: 48px; }
-.downClass li a{color: #333;font-size: 14px; float: left;  height: 48px;line-height: 48px; text-align: center; padding: 0 15px; }
+.downClass:before{
+    content: '';
+    /*display: block;*/
+    display: flex; flex-wrap: wrap;
+    position: absolute; width: 274px; border-top:  1px solid #c7c7c7; box-shadow: 0 0px 1px #c7c7c7; z-index: 1; height: 0; top: 0; left: 0;  }
+.downClass li{
+    border-bottom: 1px dashed #c7c7c7; height: 48px;line-height: 48px;
+}
+.downClass li a{
+    color: #333;font-size: 14px;
+    /*float: left; */
+    height: 48px;line-height: 48px; text-align: center; padding: 0 15px; }
 .downClass li a:hover{color: #e20015;}
 .downClass li:last-of-type{border-bottom: 0;}
+/*注册登录菜单*/
+.rightNav {display: flex; justify-self: flex-end;}
+.rightNav li {justify-self: flex-end;}
+.rightNav li:last-of-type a {padding-right: 0;}
 /*==移动端导航==*/
 .slideDown{height:48px; line-height: 48px; float: right;margin-right: 15px; z-index: 100; display: none;}
 .slideDown i{font-size: 26px; color: #666;}
@@ -32,7 +57,10 @@ header{width: 100%; z-index: 10000;}
 /*======header_top end======*/
 
 /*======header_middle start======*/
-.header_middle{width:1000px;margin:14px auto;}
+.header_middle{
+    /*width: 1000px;*/
+    width:1180px;
+    margin:14px auto;}
 .logo{float: left;}
 .logo a img{width: 240px;}
 
@@ -551,7 +579,7 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 .pgwSlideshow {
 	width: 100%;
 	background: #fff;
-	
+
 	display: none
 }
 
@@ -582,7 +610,7 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 	display: block;
 	height: 706px;
 	margin: auto;
-	
+
 }
 
 .pgwSlideshow .ps-caption {
@@ -613,7 +641,7 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 	position: relative;
 	width: 865px;
 	margin: 30px auto 0 auto;
-	
+
 }
 
 .pgwSlideshow .ps-list ul {
@@ -623,14 +651,14 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 
 	margin: 0;
 
-	
+
 	left: 0;
 }
 
 .pgwSlideshow .ps-list li {
 	float: left;
 	display: table;
-	width: 90px; 
+	width: 90px;
 	height: 90px;
 }
 
@@ -640,7 +668,7 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 	opacity: .6;
 	filter: alpha(opacity=60);
 	vertical-align: middle; text-align: center;
-	
+
 }
 
 .pgwSlideshow .ps-list li img {
@@ -659,7 +687,7 @@ footer{width: 1000px; margin: 90px auto 0 auto; }
 	overflow: hidden;
 	display: table-cell;
 	vertical-align: middle; text-align: center;
-	
+
 }
 
 

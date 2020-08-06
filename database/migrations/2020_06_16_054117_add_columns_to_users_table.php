@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\User;
+use App\Infrastructure\FilesystemHandler;
+use App\Jobs\DeleteFiles;
 
 class AddColumnsToUsersTable extends Migration
 {
@@ -30,6 +33,11 @@ class AddColumnsToUsersTable extends Migration
      */
     public function down()
     {
+        $profile_pics = User::pluck('profile_pic')->all();
+        $profile_pics = array_filter($profile_pics, function($pic){
+            return !empty($pic);
+        });
+        DeleteFiles::dispatchIf(count($profile_pics) > 0, new FilesystemHandler, $profile_pics, 'img');
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('first_name');
             $table->dropColumn('last_name');

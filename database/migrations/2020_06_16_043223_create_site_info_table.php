@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\SiteInfo;
+use App\Infrastructure\FilesystemHandler;
+use App\Jobs\DeleteFiles;
 
 class CreateSiteInfoTable extends Migration
 {
@@ -35,6 +38,11 @@ class CreateSiteInfoTable extends Migration
      */
     public function down()
     {
+        $logos = SiteInfo::pluck('site_logo')->all();
+        $logos = array_filter($logos, function($logo){
+            return !empty($logo);
+        });
+        DeleteFiles::dispatchIf(count($logos) > 0, new FilesystemHandler, $logos, 'img');
         Schema::dropIfExists('site_info');
     }
 }

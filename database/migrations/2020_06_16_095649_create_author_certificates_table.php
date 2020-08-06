@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use App\Infrastructure\FilesystemHandler;
+use App\Jobs\DeleteFiles;
 
 class CreateAuthorCertificatesTable extends Migration
 {
@@ -30,6 +33,12 @@ class CreateAuthorCertificatesTable extends Migration
      */
     public function down()
     {
+        $certificates = DB::table('author_certificates')
+            ->select('certificate_path')->get()->pluck('certificate_path')->all();
+        $certificates = array_filter($certificates, function($cert){
+            return !empty($cert);
+        });
+        DeleteFiles::dispatchIf(count($certificates) > 0, new FilesystemHandler, $certificates, 'img');
         Schema::dropIfExists('author_certificates');
     }
 }

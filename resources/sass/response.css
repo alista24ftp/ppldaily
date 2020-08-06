@@ -75,8 +75,6 @@
 
 
 
-    /****************************娟 start**********************************/
-
     /**********咨询详情 start***********/
     /*.consultation-wrap{display: none}*/
     .listLeft-txt{text-indent: 0!important;}
@@ -101,10 +99,6 @@
 
     /***********咨询首页 end**************/
 
-    /****************************娟 end**********************************/
-
-
-
     /*============================================video detail start============================================*/
     .videoDetail{width: 100%; padding: 0 15px;}
     .videoRight{display: none;}
@@ -115,8 +109,6 @@
     .video_relevant li img{width: 30%; float: left;}
     .video_relevant li p{color: #666!important; display: block!important; position: static!important;}
     /*============================================video detail end============================================*/
-
-    /*============================================zb============================================*/
 
     .videoPlay video{width: 100%; height: auto;}
 
@@ -133,7 +125,7 @@
     .imgIndex {
         width: 100%;
     }
-.imgAct ul li div{width: 49%;}
+    .imgAct ul li div{width: 49%;}
     .bannerbox::before{content: ""; height: 100%; display:none; border-left:1px solid #ccc;left: 0; position: absolute; top: 0;}
     .bannerTitle{padding: 0 15px;}
     .img_banner{margin-left: 0;}
@@ -148,8 +140,8 @@
     .imgHeading h2{padding: 0 15px;width: 145px;}
     .imgActivity ul li .act_li div:first-of-type{height: auto;}
     .imgTabOn{display: none;}
-.goList{display: block;}
-.imgTab{width: 100%;}
+    .goList{display: block;}
+    .imgTab{width: 100%;}
     .pageFan{display: none;}
     .bannerTop{width: 100%;}
     .bannerTop .dots{padding:  10px 45%;}

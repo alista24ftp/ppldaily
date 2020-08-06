@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use App\Infrastructure\FilesystemHandler;
+use App\Jobs\DeleteFiles;
 
 class CreateAdsTable extends Migration
 {
@@ -33,6 +36,11 @@ class CreateAdsTable extends Migration
      */
     public function down()
     {
+        $ad_pics = DB::table('ads')->select('ad_pic')->get()->pluck('ad_pic')->all();
+        $ad_pics = array_filter($ad_pics, function($pic){
+            return !empty($pic);
+        });
+        DeleteFiles::dispatchIf(count($ad_pics) > 0, new FilesystemHandler, $ad_pics, 'img');
         Schema::dropIfExists('ads');
     }
 }

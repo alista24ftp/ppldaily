@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react';
+import {Link} from 'react-router-dom';
 import AuthContext from '../../AuthContext';
 import LoginForm from './LoginForm';
 import CustomModal from '../CustomModal';
@@ -8,7 +9,10 @@ const Login = props => {
     const [modalShow, setModalShow] = useState(false);
     const {handleLogin} = useContext(AuthContext);
 
-    const handleModalShow = () => setModalShow(true);
+    const handleModalShow = (e) => {
+        e.preventDefault();
+        setModalShow(true);
+    }
     const handleModalHide = () => setModalShow(false);
     const handleLoginSuccess = () => {
         handleModalHide();
@@ -16,9 +20,9 @@ const Login = props => {
     };
     return (
         <>
-            <Button variant="primary" onClick={handleModalShow}>
+            <Link to="#" onClick={handleModalShow}>
                 登录
-            </Button>
+            </Link>
             <CustomModal show={modalShow} onHide={handleModalHide} modalTitle={"登录"}>
                 <LoginForm successCallback={handleLoginSuccess} />
             </CustomModal>

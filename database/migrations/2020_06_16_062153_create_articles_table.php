@@ -22,8 +22,8 @@ class CreateArticlesTable extends Migration
             $table->string('article_source', 50)->default('未知');
             $table->string('article_source_link')->nullable();
             $table->string('article_description');
-            $table->text('article_content');
-            $table->string('article_thumb');
+            $table->mediumText('article_content');
+            $table->string('article_thumb')->nullable();
             $table->boolean('article_enabled')->default(true);
             $table->boolean('likes_enabled')->default(true);
             $table->boolean('dislikes_enabled')->default(true);

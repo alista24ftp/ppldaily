@@ -25,18 +25,7 @@ address,caption,cite,code,dfn,em,th{font-style: normal;font-weight: normal;}
 .fl{float: left;}
 img{display: block; width: 100%; border: 0;}
 
-
-
-
-
-
 /*===================字体图标 start  ../font/=========================*/
-
-
-
-
-
-
 @font-face {font-family: "iconfont";
     src: url('../hnjtt/font/iconfont.eot?t=1540978392215'); /* IE9*/
     src: url('../hnjtt/font/iconfont.eot?t=1540978392215#iefix') format('embedded-opentype'), /* IE6-IE8 */
@@ -72,22 +61,4 @@ img{display: block; width: 100%; border: 0;}
 .icon-up:before { content: "\e6b4"; }
 
 .icon-you:before { content: "\e6b5"; }
-
-
-
-
-
-
-
-
-
-
-
 /*===================字体图标 end=========================*/
-
-
-
-
-
-
-

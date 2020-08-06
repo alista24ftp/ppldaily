@@ -74,6 +74,21 @@ class Article extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'comment_id', 'id');
+        return $this->hasMany(Comment::class, 'article_id', 'id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ArticleImage::class, 'article_id', 'id');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany(ArticleVideo::class, 'article_id', 'id');
+    }
+
+    public function keywords()
+    {
+        return $this->hasMany(ArticleKeyword::class, 'article_id', 'id');
     }
 }

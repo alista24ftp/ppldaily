@@ -86,7 +86,7 @@ class AuthController extends Controller
         // 1. Remove Bearer token header
         $request->headers->remove('Authorization');
         // 2. Revoke current refresh token
-        $accessToken = \Auth::guard('api')->user()->token();
+        $accessToken = $request->user('api')->token();
         $refreshTokens->revokeRefreshTokensByAccessTokenId($accessToken->id);
         // 3. Revoke current access token
         $accessToken->revoke();

@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\ArticleImage;
+use App\Infrastructure\FilesystemHandler;
+use App\Jobs\DeleteFiles;
 
 class CreateArticleImagesTable extends Migration
 {
@@ -28,6 +31,11 @@ class CreateArticleImagesTable extends Migration
      */
     public function down()
     {
+        $imgs = ArticleImage::pluck('article_image_path')->all();
+        $imgs = array_filter($imgs, function($img){
+            return !empty($img);
+        });
+        DeleteFiles::dispatchIf(count($imgs) > 0, new FilesystemHandler, $imgs, 'img');
         Schema::dropIfExists('article_images');
     }
 }
